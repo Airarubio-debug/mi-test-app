@@ -1,4 +1,4 @@
-import { sostenibilidadQuestions } from './sostenibilidad';
+import { sostenibilidadQuestions } from './components/sostenibilidad';
 
 export const initialTests = [
   {
