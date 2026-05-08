@@ -6,5 +6,5 @@ export const initialTests = [
     name: 'Sostenibilidad (ASIR)',
     questions: sostenibilidadQuestions
   }
-];
+]; 
    
