@@ -51,18 +51,7 @@ export default function Home({ tests, stats, userName, setUserName, onStartTest,
                     {test.questions.length <= 3 ? 'Fácil' : test.questions.length <= 6 ? 'Media' : 'Difícil'}
                   </span>
                 </div>
-                <button 
-                  className="delete-btn"
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    if (confirm(`¿Eliminar "${test.name}"?`)) {
-                      onDeleteTest(test.id)
-                    }
-                  }}
-                  title="Eliminar test"
-                >
-                  ✕
-                </button>
+                
               </div>
             ))
           ) : (
@@ -70,7 +59,7 @@ export default function Home({ tests, stats, userName, setUserName, onStartTest,
           )}
         </div>
 
-        <button className="btn" onClick={onCreateTest}>+ Crear test nuevo</button>
+      {/* <button className="btn" onClick={onCreateTest}>+ Crear test nuevo</button> */}
       </div>
     </div>
   )
