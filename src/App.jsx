@@ -6,6 +6,7 @@ import Results from './components/Results'
 import Editor from './components/Editor'
 // Importamos el archivo central de la carpeta data
 import { initialTests } from './tests'; // o './tests' si elegiste ese nombre
+import { supabase } from './supabase'
 
 function App() {
   const [screen, setScreen] = useState('home')
@@ -13,6 +14,7 @@ function App() {
   const [currentTest, setCurrentTest] = useState(null)
   const [quizResult, setQuizResult] = useState(null)
   const [stats, setStats] = useState({ testsDone: 0, bestScore: null })
+  const [userName, setUserName] = useState('')
 
   useEffect(() => {
     // 1. Cargamos los tests desde el archivo central de datos
@@ -33,13 +35,28 @@ function App() {
     }
   }
 
-  const finishQuiz = (score, userAnswers) => {
+  const finishQuiz = async (score, userAnswers) => {
     const newStats = {
       testsDone: stats.testsDone + 1,
       bestScore: stats.bestScore === null ? score : Math.max(stats.bestScore, score)
     }
     setStats(newStats)
     localStorage.setItem('stats', JSON.stringify(newStats))
+    
+    // Guardar resultado en Supabase
+    if (userName) {
+      try {
+        await supabase.from('resultados').insert({
+          nombre: userName,
+          test_nombre: currentTest.name,
+          puntuacion: score,
+          total_preguntas: currentTest.questions.length
+        })
+      } catch (error) {
+        console.error('Error al guardar resultado:', error)
+      }
+    }
+    
     setQuizResult({ score, userAnswers, testName: currentTest.name })
     setScreen('results')
   }
@@ -69,15 +86,13 @@ function App() {
   return (
     <div className="app">
       {/* Pantalla de Inicio */}
-      {screen === 'home' && (
-        <Home 
-          tests={tests} 
-          stats={stats} 
-          onStartTest={startTest} 
-          onCreateTest={goToEditor} 
-          onDeleteTest={deleteTest} 
-        />
-      )}
+      {screen === 'home' && <Home tests={tests} 
+      stats={stats} 
+      userName={userName} 
+      setUserName={setUserName} 
+      onStartTest={startTest} 
+      onCreateTest={goToEditor} 
+      onDeleteTest={deleteTest} />}
 
       {/* Pantalla del Test */}
       {screen === 'quiz' && (

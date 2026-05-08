@@ -1,6 +1,6 @@
 import './Home.css'
 
-export default function Home({ tests, stats, onStartTest, onCreateTest, onDeleteTest }) {
+export default function Home({ tests, stats, userName, setUserName, onStartTest, onCreateTest, onDeleteTest }) {
   return (
     <div>
       <div className="topbar">
@@ -11,6 +11,18 @@ export default function Home({ tests, stats, onStartTest, onCreateTest, onDelete
         <div className="home-header">
           <h1 className="home-title">Hola, estudiante</h1>
           <p className="home-sub">Elige un test para practicar</p>
+        </div>
+
+        <div className="form-group" style={{ marginBottom: '1rem' }}>
+          <label style={{ display: 'block', fontSize: '13px', fontWeight: '500', marginBottom: '6px', color: 'var(--text-primary)' }}>
+            Tu nombre
+          </label>
+          <input
+            type="text"
+            placeholder="Escribe tu nombre..."
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+          />
         </div>
 
         <div className="stat-grid">
