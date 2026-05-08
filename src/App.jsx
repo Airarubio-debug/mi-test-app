@@ -43,18 +43,26 @@ function App() {
     setStats(newStats)
     localStorage.setItem('stats', JSON.stringify(newStats))
     
-    // Guardar resultado en Supabase
+    console.log('Intentando guardar en Supabase...')
+    console.log('Nombre del usuario:', userName)
+    console.log('Test:', currentTest.name)
+    console.log('Puntuación:', score)
+    
     if (userName) {
-      try {
-        await supabase.from('resultados').insert({
-          nombre: userName,
-          test_nombre: currentTest.name,
-          puntuacion: score,
-          total_preguntas: currentTest.questions.length
-        })
-      } catch (error) {
-        console.error('Error al guardar resultado:', error)
+      const { data, error } = await supabase.from('resultados').insert({
+        nombre: userName,
+        test_nombre: currentTest.name,
+        puntuacion: score,
+        total_preguntas: currentTest.questions.length
+      })
+      
+      if (error) {
+        console.error('Error al guardar:', error)
+      } else {
+        console.log('Guardado correctamente:', data)
       }
+    } else {
+      console.warn('No hay nombre de usuario, no se guarda nada')
     }
     
     setQuizResult({ score, userAnswers, testName: currentTest.name })
