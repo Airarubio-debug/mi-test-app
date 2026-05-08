@@ -4,6 +4,8 @@ import Home from './components/Home'
 import Quiz from './components/Quiz'
 import Results from './components/Results'
 import Editor from './components/Editor'
+// Importamos los tests del archivo que acabamos de crear
+import { initialTests } from './tests'
 
 function App() {
   const [screen, setScreen] = useState('home')
@@ -13,36 +15,22 @@ function App() {
   const [stats, setStats] = useState({ testsDone: 0, bestScore: null })
 
   useEffect(() => {
-  // 1. Definimos tus tests actuales (los que quieres que se vean)
-  const currentCodeTests = [
-    {
-      id: 1,
-      name: 'Sostenibilidad (ASIR)',
-      questions: [ /* ... tus preguntas ... */ ]
+    // 1. Cargamos los tests desde el archivo (prioridad al desarrollo)
+    setTests(initialTests);
+    
+    // 2. Cargamos las estadísticas guardadas
+    const savedStats = localStorage.getItem('stats');
+    if (savedStats) {
+      setStats(JSON.parse(savedStats));
     }
-    // Añade aquí los nuevos que hayas creado en VS Code
-  ];
-
-  const savedTests = localStorage.getItem('tests');
-
-  if (!savedTests) {
-    // Si no hay nada, guardamos los del código
-    setTests(currentCodeTests);
-    localStorage.setItem('tests', JSON.stringify(currentCodeTests));
-  } else {
-    // OPCIONAL: Si quieres que SIEMPRE mande el código sobre el localStorage
-    // mientras estás desarrollando, usa:
-    setTests(currentCodeTests);
-  }
-  
-  // Ojo: Asegúrate de que 'savedStats' esté definido, 
-  // en tu código falta la línea: const savedStats = localStorage.getItem('stats');
-}, []);
+  }, []);
 
   const startTest = (testId) => {
     const test = tests.find(t => t.id === testId)
-    setCurrentTest(test)
-    setScreen('quiz')
+    if (test) {
+      setCurrentTest(test)
+      setScreen('quiz')
+    }
   }
 
   const finishQuiz = (score, userAnswers) => {
@@ -62,9 +50,7 @@ function App() {
     setQuizResult(null)
   }
 
-  const goToEditor = () => {
-    setScreen('editor')
-  }
+  const goToEditor = () => setScreen('editor')
 
   const saveTest = (newTest) => {
     const testWithId = { ...newTest, id: Date.now() }
@@ -82,7 +68,15 @@ function App() {
 
   return (
     <div className="app">
-      {screen === 'home' && <Home tests={tests} stats={stats} onStartTest={startTest} onCreateTest={goToEditor} onDeleteTest={deleteTest} />}
+      {screen === 'home' && (
+        <Home 
+          tests={tests} 
+          stats={stats} 
+          onStartTest={startTest} 
+          onCreateTest={goToEditor} 
+          onDeleteTest={deleteTest} 
+        />
+      )}
       {screen === 'quiz' && <Quiz test={currentTest} onFinish={finishQuiz} onBack={goHome} />}
       {screen === 'results' && <Results result={quizResult} test={currentTest} onBack={goHome} />}
       {screen === 'editor' && <Editor onSave={saveTest} onBack={goHome} />}
