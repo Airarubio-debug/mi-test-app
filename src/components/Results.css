@@ -1,0 +1,142 @@
+.results-screen {
+  padding: 1.25rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.score-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  border: 3px solid var(--primary);
+  margin: 1.5rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-num {
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--primary-dark);
+  line-height: 1;
+}
+
+.score-lbl {
+  font-size: 11px;
+  color: var(--primary);
+  margin-top: 4px;
+}
+
+.results-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.detail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.detail-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  padding: 0.5rem 0.75rem;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dot.ok {
+  background: var(--success);
+}
+
+.dot.fail {
+  background: var(--danger);
+}
+
+.detail-q {
+  flex: 1;
+}
+
+.detail-badge {
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.detail-badge.ok {
+  color: #27500A;
+}
+
+.detail-badge.fail {
+  color: #791F1F;
+}
+
+.bar-chart {
+  margin-bottom: 1.5rem;
+}
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.bar-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  width: 60px;
+  flex-shrink: 0;
+}
+
+.bar-track {
+  flex: 1;
+  height: 10px;
+  background: var(--bg-secondary);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 10px;
+  border-radius: 5px;
+  transition: width 0.3s ease;
+}
+
+.bar-val {
+  font-size: 12px;
+  color: var(--text-secondary);
+  width: 28px;
+  text-align: right;
+}
+
+@media (max-width: 600px) {
+  .results-screen {
+    padding: 1rem;
+  }
+
+  .score-circle {
+    margin: 1rem auto;
+  }
+
+  .results-title {
+    font-size: 16px;
+  }
+}
