@@ -1,5 +1,6 @@
 import { sostenibilidadQuestions } from './components/sostenibilidad';
 import { seguridadQuestions } from './components/seguridad';
+import { redQuestions } from './components/red';
 
 export const initialTests = [
   {
@@ -11,5 +12,10 @@ export const initialTests = [
     id: 2,
     name: 'Seguridad (ASIR)',
     questions: seguridadQuestions
+  },
+  {
+    id: 3,
+    name: 'Servicios de Red (ASIR)',
+    questions: redQuestions
   }
 ];
