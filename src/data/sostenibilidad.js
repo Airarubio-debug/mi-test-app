@@ -13,7 +13,7 @@ export const sostenibilidadQuestions = [
     options: ["Sistema humano", "Ecosistema", "Sociedad", "Equilibrio"],
     answer: 1
   },
-  {
+  { 
     id: 3,
     question: "Los recursos naturales:",
     options: ["Proporcionan materiales a los sistemas económicos", "Son materiales que se extraen de la naturaleza y se utilizan en la producción", "Son materiales que proceden de la actividad humana y resultan inservibles si no se transforman", "Son dinero, fundamentalmente"],
