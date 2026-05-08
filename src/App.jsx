@@ -4,8 +4,8 @@ import Home from './components/Home'
 import Quiz from './components/Quiz'
 import Results from './components/Results'
 import Editor from './components/Editor'
-// Importamos los tests del archivo que acabamos de crear
-import { initialTests } from './tests'
+// Importamos el archivo central de la carpeta data
+import { initialTests } from '../data/tests'
 
 function App() {
   const [screen, setScreen] = useState('home')
@@ -15,10 +15,10 @@ function App() {
   const [stats, setStats] = useState({ testsDone: 0, bestScore: null })
 
   useEffect(() => {
-    // 1. Cargamos los tests desde el archivo (prioridad al desarrollo)
+    // 1. Cargamos los tests desde el archivo central de datos
     setTests(initialTests);
     
-    // 2. Cargamos las estadísticas guardadas
+    // 2. Cargamos las estadísticas guardadas en el navegador
     const savedStats = localStorage.getItem('stats');
     if (savedStats) {
       setStats(JSON.parse(savedStats));
@@ -68,6 +68,7 @@ function App() {
 
   return (
     <div className="app">
+      {/* Pantalla de Inicio */}
       {screen === 'home' && (
         <Home 
           tests={tests} 
@@ -77,9 +78,32 @@ function App() {
           onDeleteTest={deleteTest} 
         />
       )}
-      {screen === 'quiz' && <Quiz test={currentTest} onFinish={finishQuiz} onBack={goHome} />}
-      {screen === 'results' && <Results result={quizResult} test={currentTest} onBack={goHome} />}
-      {screen === 'editor' && <Editor onSave={saveTest} onBack={goHome} />}
+
+      {/* Pantalla del Test */}
+      {screen === 'quiz' && (
+        <Quiz 
+          test={currentTest} 
+          onFinish={finishQuiz} 
+          onBack={goHome} 
+        />
+      )}
+
+      {/* Pantalla de Resultados */}
+      {screen === 'results' && (
+        <Results 
+          result={quizResult} 
+          test={currentTest} 
+          onBack={goHome} 
+        />
+      )}
+
+      {/* Pantalla del Editor (para crear tests a mano) */}
+      {screen === 'editor' && (
+        <Editor 
+          onSave={saveTest} 
+          onBack={goHome} 
+        />
+      )}
     </div>
   )
 }
