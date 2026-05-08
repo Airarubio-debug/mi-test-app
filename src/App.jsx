@@ -5,7 +5,7 @@ import Quiz from './components/Quiz'
 import Results from './components/Results'
 import Editor from './components/Editor'
 // Importamos el archivo central de la carpeta data
-import { initialTests } from '../data/tests'
+import { initialTests } from '../data/banco';
 
 function App() {
   const [screen, setScreen] = useState('home')
