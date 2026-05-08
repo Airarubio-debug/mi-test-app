@@ -457,7 +457,7 @@ export const sostenibilidadQuestions = [
     options: ["Financiero", "Ambiental", "Gobernanza", "Social"],
     answer: 2
   },
-  {
+  { 
     id: 77,
     question: "Sustituir diésel por vehículos eléctricos mejora principalmente:",
     options: ["Financiero", "Gobernanza", "Ambiental", "Social"],
