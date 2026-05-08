@@ -1,6 +1,6 @@
 // src/data/tests.js
 // Importamos las preguntas de cada asignatura desde sus archivos individuales
-import { sostenibilidadQuestions } from './sostenibilidad';
+import { sostenibilidadQuestions } from './sostenibilidad'
 
 // Aquí irás añadiendo los nuevos archivos conforme los crees, por ejemplo:
 // import { redesQuestions } from './redes';
