@@ -1,4 +1,4 @@
-import { sostenibilidadQuestions } from './sostenibilidad'; // Asegúrate de que coincida con el nombre en GitHub
+import { sostenibilidadQuestions } from './preguntas_sos'; // Asegúrate de que coincida con el nombre en GitHub
 
 export const initialTests = [
   {
