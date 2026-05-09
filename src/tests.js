@@ -2,6 +2,7 @@ import { sostenibilidadQuestions } from './components/sostenibilidad';
 import { seguridadQuestions } from './components/seguridad';
 import { redQuestions } from './components/red';
 import { pythonQuestions } from './components/python';
+import { itinerarioQuestions } from './components/itinerario';
 
 export const initialTests = [
   {
@@ -23,5 +24,10 @@ export const initialTests = [
     id: 4,
     name: 'Python (ASIR)',
     questions: pythonQuestions
+  },
+  {
+    id: 5,
+    name: 'Itinerario IPE II (ASIR)',
+    questions: itinerarioQuestions
   }
 ];
