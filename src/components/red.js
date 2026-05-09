@@ -1,1296 +1,577 @@
 // src/components/red.js
 
 export const redQuestions = [
+  // BLOQUE 1: DNS
   {
-    id: 1,
-    q: "Un dominio tiene un nombre, y todos sus miembros comparten el mismo.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 2,
-    q: "Señala la afirmación correcta sobre un FQDN (Nombre de Dominio Completo):",
+    q: "En relación con el servicio DNS, ¿cuál de estas afirmaciones es incorrecta?",
     opts: [
-      "Puede tener un máximo de 63 caracteres.",
-      "No se puede utilizar la letra ñ en ningún dominio actual.",
-      "Después del nombre de equipo, podemos tener el TLD separado por un punto.",
-      "Siempre termina en un punto implícito que hace referencia al dominio raíz."
+      "En cada zona disponemos de la información necesaria para resolver los nombres de las máquinas de tantos dominios como necesitemos, pero al menos de uno.",
+      "Cada servidor DNS se debe encargar como mínimo de una zona, pero puede gestionar varias si es necesario.",
+      "Se trata de una organización jerárquica en dominios y sus subdominios, por niveles.",
+      "Un dominio tiene varios nombres y todos los miembros de su organización comparten ese nombre."
     ],
     ans: 3
   },
   {
-    id: 3,
-    q: "El elemento más a la izquierda del nombre de dominio completo representa siempre el nombre del equipo o un alias.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 4,
-    q: "Los dominios y sus subdominios se separan exclusivamente con guiones.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 5,
-    q: "La jerarquía de dominios es descendente, del nivel superior hacia los inferiores, pero el nombre de dominio completo se lee al revés, de izquierda a derecha.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 6,
-    q: "Podemos tener dos nombres de dominio completos que se llamen igual.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 7,
-    q: "Podemos crear alias de nombres sobre los equipos de máquinas.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 8,
-    q: "Si tenemos un servidor que resuelve en el dominio mheducation.com, la dirección IP de ese servidor se encuentra almacenada...",
+    q: "¿Cómo se define un dominio?",
     opts: [
-      "Solo en el servidor de mheducation.com.",
-      "En mheducation.com y en los servidores TLD de .com.",
-      "Solo en los servidores de primer nivel para el dominio .com.",
-      "En los servidores TLD de .com y en los servidores raíz."
-    ],
-    ans: 0
-  },
-  {
-    id: 9,
-    q: "El dominio de primer nivel .net es un dominio de tipo sTLD.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 10,
-    q: "Los clientes DNS realizan sus consultas a través del resolutor (resolver).",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 11,
-    q: "En un proceso de resolución de www.mheducation.com, un servidor de .com le envía a un servidor raíz la IP. ¿Qué resolución es?",
-    opts: ["No existe este tipo de resolución.", "Resolución iterativa.", "Resolución recursiva.", "Resolución inversa."],
-    ans: 0
-  },
-  {
-    id: 12,
-    q: "En un proceso de resolución de www.mheducation.com, un servidor de .com envía directamente la IP a nuestro servidor DNS.",
-    opts: ["No existe este tipo de resolución.", "Resolución iterativa.", "Resolución recursiva.", "Resolución inversa."],
-    ans: 0
-  },
-  {
-    id: 13,
-    q: "El puerto 53 es donde están escuchando los servidores las peticiones DNS de los clientes.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 14,
-    q: "En la resolución directa, se busca por cierta IP para averiguar su nombre DNS.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 15,
-    q: "Existen cuatro tipos diferentes de servidores DNS: primario, secundario, caché y reenviador.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 16,
-    q: "Podemos realizar modificaciones en una zona secundaria.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 17,
-    q: "Una zona primaria contiene una copia del contenido de una zona secundaria.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 18,
-    q: "Una zona secundaria se puede usar para resolver nombres.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 19,
-    q: "Las zonas sirven para resoluciones directas, pero también para resoluciones inversas.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 20,
-    q: "Una zona slave es una zona secundaria.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 21,
-    q: "Un servidor DNS es autoritario sobre zonas primarias, pero no sobre las secundarias.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 22,
-    q: "¿Qué podemos hacer si tenemos un servidor DNS con la zona correspondiente a un dominio dividido en subdominios?",
-    opts: [
-      "Que el servidor use zona del servidor de nivel superior.",
-      "Que el servidor delegue en otras zonas la resolución de los subdominios.",
-      "Que el servidor tenga una sola zona para resolver todo el dominio.",
-      "Que el servidor delegue la gestión en servidores de terceros."
-    ],
-    ans: 1
-  },
-  {
-    id: 23,
-    q: "En los registros de recursos, el campo de marca de tiempo de vida (TTL) es un campo obligatorio.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 24,
-    q: "El tipo de registro PTR de la clase IN sirve para las búsquedas inversas.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 25,
-    q: "Para instalar el servidor DNS en GNU/Linux ejecutaremos $ sudo apt install named.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 26,
-    q: "Los archivos de configuración del servidor DNS BIND en GNU/Linux están en /etc/bind.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 27,
-    q: "Respecto a los archivos de configuración de BIND, señala la correcta:",
-    opts: [
-      "named.conf.default-zones contiene información de zonas del espacio de nombres.",
-      "named.conf.local contiene zonas creadas por defecto al instalar.",
-      "named.conf.options contiene opciones globales del servidor.",
-      "named.conf incluye en su configuración el contenido de los tres anteriores."
-    ],
-    ans: 3
-  },
-  {
-    id: 28,
-    q: "En BIND podemos definir tantas acl de listas de direcciones IP como necesitemos.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 29,
-    q: "En BIND podemos utilizar cinco tipos de zonas: master, slave, hint, forward y view.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 30,
-    q: "El servicio DDNS surge por la escasez de IPv4.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 31,
-    q: "Solo podremos montarnos un servidor web en nuestro equipo con DDNS.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 32,
-    q: "¿Qué servicio DDNS permite ser reutilizado por otros servicios DDNS?",
-    opts: ["DynDNS.org.", "DtDNS.com.", "dnsomatic.com.", "no-ip.com."],
-    ans: 2
-  },
-  {
-    id: 33,
-    q: "El servicio DDNS también se utiliza para sincronizar el servicio DNS y el servicio DHCP entre ellos.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 34,
-    q: "El servicio DuckDNS funciona mediante una API HTTP con un certificado SSL de 128 bits válido.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 35,
-    q: "Un ordenador tiene la IP 170.10.30.5, y máscara 255.255.0.0. Su ID de red es...",
-    opts: ["5.", "34.5.", "170.10.", "170.10.30."],
-    ans: 2
-  },
-  {
-    id: 36,
-    q: "En la configuración manual de red, indica cuál de estos no se configura.",
-    opts: ["IPv4.", "IPv6.", "Servidor DNS.", "Servidor DHCP."],
-    ans: 3
-  },
-  {
-    id: 37,
-    q: "Adaptador con IP 170.10.30.1 y máscara 255.255.0.0. Indica el ID del host.",
-    opts: ["170.10", "170.10.30", "1", "30.1"],
-    ans: 3
-  },
-  {
-    id: 38,
-    q: "Es obligatorio que puerta de enlace y DNS estén en la misma red que el ordenador para trabajar en Internet.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 39,
-    q: "En Ubuntu/Netplan, para asignar IP por DHCP, ¿qué valor debe tener 'renderer'?",
-    opts: ["networkd", "NetworkManager", "dhcp", "false"],
-    ans: 0
-  },
-  {
-    id: 40,
-    q: "De los siguientes mensajes DHCP, indica cuál no es enviado de cliente a servidor.",
-    opts: ["DHCP_ACK.", "DHCP_RELEASE.", "DHCP_DISCOVER.", "DHCP_REQUEST."],
-    ans: 0
-  },
-  {
-    id: 41,
-    q: "Cuando un cliente solicita renovar una concesión DHCP, el primer mensaje es...",
-    opts: ["DHCP_DISCOVER.", "DHCP_OFFER.", "DHCP_REQUEST.", "DHCP_RELEASE."],
-    ans: 2
-  },
-  {
-    id: 42,
-    q: "Orden normal de mensajes DHCP para asignación de IP:",
-    opts: ["DISCOVER, OFFER, REQUEST, ACK.", "DISCOVER, REQUEST, OFFER, ACK.", "OFFER, DISCOVER, REQUEST, ACCEPT.", "OFFER, REQUEST, DISCOVER, ACCEPT."],
-    ans: 0
-  },
-  {
-    id: 43,
-    q: "Parámetro que NO se considera obligatorio entregar por DHCP.",
-    opts: ["IPs de servidores DNS.", "Direcciones IP clientes.", "Tiempo de concesión.", "Tiempo de renovación."],
-    ans: 0
-  },
-  {
-    id: 44,
-    q: "Método DHCP donde un adaptador no puede recibir diferentes IPs de un mismo servidor.",
-    opts: ["Asignación manual.", "Asignación automática.", "Asignación dinámica.", "Ninguna."],
-    ans: 0
-  },
-  {
-    id: 45,
-    q: "Directorio del archivo dhcpd.conf en Ubuntu.",
-    opts: ["/etc/", "/etc/dhcp/", "/etc/init.d/", "/var/lib/dhcp/"],
-    ans: 1
-  },
-  {
-    id: 46,
-    q: "Declaración en dhcpd.conf para especificar rangos de IPs dinámicas.",
-    opts: ["subnet.", "shared-network.", "host.", "group."],
-    ans: 0
-  },
-  {
-    id: 47,
-    q: "Comando obsoleto en Ubuntu frente a Netplan/iproute2.",
-    opts: ["route.", "ip.", "dhclient.", "ifup."],
-    ans: 3
-  },
-  {
-    id: 48,
-    q: "Comando para detener el servicio DHCP en Ubuntu.",
-    opts: ["/etc/init.d/dhcp3-server start", "/etc/init.d/dhcp3-server", "service dns-server start", "service dhcp3-server stop"],
-    ans: 3
-  },
-  {
-    id: 49,
-    q: "Paquete para instalar el servidor DHCP de ISC en Ubuntu.",
-    opts: ["dhcp.", "isc-dhcp-server.", "dhcpd.", "dhcpd-isc-server."],
-    ans: 1
-  },
-  {
-    id: 50,
-    q: "Parámetro para enviar DHCPNack si la configuración no es permitida.",
-    opts: ["range.", "group.", "authoritative.", "param."],
-    ans: 2
-  },
-  {
-    id: 51,
-    q: "Indica cuál de las siguientes afirmaciones es verdadera.",
-    opts: [
-      "El servidor DHCP mantiene base de datos con conexiones activas.",
-      "El servidor DHCP detecta clientes no autorizados.",
-      "No puede ofrecer parámetros a varias subredes a la vez.",
-      "El servidor DHCP no permite auditorías."
-    ],
-    ans: 0
-  },
-  {
-    id: 52,
-    q: "Situación que NO se resuelve mediante servidor DHCP.",
-    opts: [
-      "Equipo no autorizado con IP válida accede a la red.",
-      "Equipo reubicado en otra subred.",
-      "Errores por configuración manual.",
-      "Configuración manual tediosa."
-    ],
-    ans: 0
-  },
-  {
-    id: 53,
-    q: "Indica cuál de las siguientes es falsa:",
-    opts: [
-      "DHCP snooping se configura en el switch.",
-      "Rogue DHCP busca ataques MitM.",
-      "Se indican puertos para servidores DHCP autorizados.",
-      "Snooping bloquea DISCOVER desde puertos no autorizados."
-    ],
-    ans: 3
-  },
-  {
-    id: 54,
-    q: "Función del mensaje DHCPNack en servidor autoritativo.",
-    opts: [
-      "Reconocer configuración de otro servidor.",
-      "Rechazar configuración autoasignada por cliente.",
-      "Aceptar configuración autoasignada.",
-      "Impedir recibir parámetros de otro servidor."
-    ],
-    ans: 1
-  },
-  {
-    id: 55,
-    q: "Protocolo HTTP es de transferencia de ___. Por defecto puerto ___. Cliente envía ___ y servidor ___.",
-    opts: ["hipertexto, 80, respuesta, petición.", "hipertexto, 80, petición, respuesta.", "HTTP, 80, petición, respuesta.", "hipertexto, 443, petición, respuesta."],
-    ans: 1
-  },
-  {
-    id: 56,
-    q: "¿Qué dato NO forma parte de la línea de petición HTTP?",
-    opts: ["Versión protocolo.", "Método.", "URI.", "Descripción de estado."],
-    ans: 3
-  },
-  {
-    id: 57,
-    q: "¿Qué dato forma parte de la línea de respuesta HTTP?",
-    opts: ["Versión protocolo.", "Método.", "Cuerpo.", "Servidor."],
-    ans: 0
-  },
-  {
-    id: 58,
-    q: "MIME permite transmitir multitud de archivos mediante:",
-    opts: ["HTTP.", "FTP.", "Correo electrónico.", "DNS."],
-    ans: 2
-  },
-  {
-    id: 59,
-    q: "Elemento de un documento web que enlaza con otro.",
-    opts: ["Hipertexto.", "Hipermedio.", "Hipervínculo.", "HTML."],
-    ans: 2
-  },
-  {
-    id: 60,
-    q: "Carpeta raíz del sitio web por defecto en Apache.",
-    opts: ["/var/www/html", "/var/lib/apache2", "/etc/apache2", "/etc/init.d/apache2"],
-    ans: 0
-  },
-  {
-    id: 61,
-    q: "Archivo principal de configuración de Apache en Ubuntu.",
-    opts: ["/etc/apache/httpd.conf", "/etc/apache2/apache2.conf", "/etc/apache/apache2.conf", "/var/www"],
-    ans: 1
-  },
-  {
-    id: 62,
-    q: "Archivo para resolución del servidor web en equipo local.",
-    opts: ["httpd.conf", "apache2.conf", "/etc/hosts", "apache.conf"],
-    ans: 2
-  },
-  {
-    id: 63,
-    q: "Comando para reiniciar el servicio Apache.",
-    opts: ["systemctl apache2 restart", "systemctl restart apache2", "service restart apache2", "/etc/init.d/apache restart"],
-    ans: 1
-  },
-  {
-    id: 64,
-    q: "Servidor web con mayor implantación global actual.",
-    opts: ["Apache.", "IIS.", "Google.", "Nginx."],
-    ans: 3
-  },
-  {
-    id: 65,
-    q: "Directorio de archivos de carga de módulos instalados en Apache.",
-    opts: ["/usr/lib/modules", "/etc/apache2/modules", "mods-enabled", "/etc/apache2/mods-available"],
-    ans: 3
-  },
-  {
-    id: 66,
-    q: "Ubicación de DocumentRoot en configuración de servidor virtual.",
-    opts: ["Dentro de VirtualHost.", "Antes de VirtualHost.", "Después de VirtualHost.", "Antes de NameVirtualHost."],
-    ans: 0
-  },
-  {
-    id: 67,
-    q: "Directiva ServerRoot /apache indica...",
-    opts: ["Configuración en /apache.", "Raíz web en /apache.", "Páginas en /apache.", "Servidor instalado en /apache."],
-    ans: 3
-  },
-  {
-    id: 68,
-    q: "Indica la opción verdadera sobre Apache.",
-    opts: [
-      "Registro similar al de Windows.",
-      "Deja activados por defecto sus mecanismos de registro.",
-      "No almacena actividad del servidor.",
-      "No almacena información de accesos."
-    ],
-    ans: 1
-  },
-  {
-    id: 69,
-    q: "Respecto al módulo mod_userdir, indica la opción correcta.",
-    opts: [
-      "Cualquier usuario puede tener espacio web en su home.",
-      "Usuario dueño de su home.",
-      "Todos los usuarios pueden tener web propia por defecto.",
-      "Dueño del dominio."
+      "Un dominio son los diferentes árboles del espacio de nombres de dominio del servicio DNS.",
+      "Un dominio no pertenece a los árboles del espacio de nombres de dominio del sistema DNS.",
+      "Un dominio es cada uno de los subárboles del espacio de nombres de dominio del sistema DNS.",
+      "Un dominio no pertenece al espacio de nombres de dominio del sistema DNS."
     ],
     ans: 2
   },
   {
-    id: 70,
-    q: "Respecto a la directiva Satisfy, indica la opción correcta.",
+    q: "¿Cómo se denominan las resoluciones de nombres de dominio en el sistema de dominios?",
     opts: [
-      "Selecciona usuarios autenticados.",
-      "Parámetros allow y deny.",
-      "Puede requerir autenticación HTTP e IP.",
-      "Opciones a y b."
+      "Resolución iterativa y directa.",
+      "Resolución directa e iterativa.",
+      "Resolución directa, iterativa y recursiva.",
+      "Resolución iterativa y recursiva."
+    ],
+    ans: 3
+  },
+  {
+    q: "¿De qué maneras podemos solicitar información en las resoluciones?",
+    opts: [
+      "De manera iterativa o directa.",
+      "De manera iterativa o inversa.",
+      "Ninguna de las otras opciones es correcta.",
+      "De manera directa o inversa."
+    ],
+    ans: 3
+  },
+  {
+    q: "¿Qué tipo de zonas podemos crear?",
+    opts: [
+      "Inversa y secundaria.",
+      "Directa e inversa.",
+      "Secundaria y directa.",
+      "Primaria y directa."
+    ],
+    ans: 1
+  },
+  {
+    q: "¿Qué registro de recurso sirve para identificar al servidor de correo?",
+    opts: ["A.", "NS.", "MX.", "PTR."],
+    ans: 2
+  },
+  {
+    q: "¿Cómo podemos saber el estado del servidor DNS?",
+    opts: [
+      "systemctl star named o su equivalente service bind9 star.",
+      "systemctl stop named o su equivalente service bind9 stop.",
+      "systemctl status named o su equivalente service bind9 status.",
+      "systemctl restart named o su equivalente service bind9 restart."
     ],
     ans: 2
   },
   {
-    id: 71,
+    q: "¿Cómo se llaman las cinco zonas que instala BIND?",
+    opts: [
+      "db.0, db.127, db.255, db.full y db.local.",
+      "db.0, db.123, db.255, db.empty y db.global.",
+      "db.0, db.127, db.255, db.empty y db.local.",
+      "db.0, db.123, db.255, db.full y db.global."
+    ],
+    ans: 2
+  },
+  {
+    q: "En GNU/Linux, el DNS dinámico permite que…",
+    opts: [
+      "BIND y DHCP Server puedan trabajar sincronizados.",
+      "El Dnsmasq y DHCP Server puedan trabajar sincronizados.",
+      "Dentro del Active Directory tengamos el servidor de DNS y DHCP de Microsoft sincronizados.",
+      "Ninguna de las otras opciones es correcta."
+    ],
+    ans: 0
+  },
+  {
+    q: "¿Qué permite el servicio DNS-O-Matic?",
+    opts: [
+      "Todas las otras son correctas.",
+      "Tener la IP pública dinámica de nuestro rúter siempre actualizada.",
+      "Tiene los diferentes tokens de nuestros servicios de DDNS.",
+      "Poder hacer de pasarela entre nuestro rúter y diferentes servicios de DDNS."
+    ],
+    ans: 0
+  },
+
+  // BLOQUE 2: DHCP
+  {
+    q: "En el archivo de configuración dhcpd.conf se realiza una reserva de una IP para un ordenador concreto mediante una declaración...",
+    opts: ["fixed-address.", "option hostname.", "shared-network.", "host."],
+    ans: 3
+  },
+  {
+    q: "Un cliente DHCP debe iniciar el proceso de renovación de la concesión cuando...",
+    opts: [
+      "Se ha agotado la mitad del tiempo establecido en max-lease-time.",
+      "Ha finalizado la concesión anterior.",
+      "Se ha agotado el tiempo de concesión por defecto.",
+      "Se ha agotado la mitad del tiempo de concesión asignado."
+    ],
+    ans: 3
+  },
+  {
+    q: "Para especificar en el archivo de configuración dhcpd.conf las IP de los servidores DNS que se enviarán a los clientes DHCP, se utiliza la directiva...",
+    opts: [
+      "option domain-name.",
+      "option domain-name-servers.",
+      "option dns-servers.",
+      "option ip-dns-servers."
+    ],
+    ans: 1
+  },
+  {
+    q: "Cuando inicia el proceso de configuración, un cliente DHCP envía un mensaje DHCP...",
+    opts: [
+      "A todos los equipos de la red.",
+      "A los servidores DNS, para que estos las reenvíen al servidor DHCP.",
+      "A la dirección IP de uno de los servidores DHCP de la red.",
+      "A las direcciones IP que tiene configuradas como direcciones de servidores DHCP."
+    ],
+    ans: 0
+  },
+  {
+    q: "En sistemas GNU/Linux Ubuntu se puede solicitar la renovación de una concesión DHCP con el comando...",
+    opts: ["ipconfig /renew.", "dhclient.", "ifconfig /release.", "ip /renew."],
+    ans: 1
+  },
+  {
+    q: "En la declaración de una reserva DHCP en el archivo dhcpd.conf, para que se pueda identificar al cliente, se debe especificar su...",
+    opts: ["Nombre DNS.", "Nombre de equipo.", "Dirección física.", "Dirección IP."],
+    ans: 2
+  },
+  {
+    q: "Indica qué puerto del servidor DHCP se utiliza para comunicarse con los clientes.",
+    opts: ["UDP 67.", "TCP 68.", "TCP 67.", "UDP 68."],
+    ans: 3
+  },
+  {
+    q: "En el servidor DHCP de Windows Server, cuando se ha declarado un conjunto de direcciones IP y si queremos que algunas de ellas no se asignen a los clientes, debemos realizar...",
+    opts: ["Concesiones.", "Denegaciones.", "Exclusiones.", "Reservas."],
+    ans: 2
+  },
+  {
+    q: "Indica cuál de las siguientes es la función de la declaración group.",
+    opts: [
+      "Aplica parámetros de forma global a un grupo para varios hosts.",
+      "Agrupa las declaraciones de cada uno de los hosts en el archivo de configuración.",
+      "Aplica parámetros de forma global a un grupo para varias declaraciones.",
+      "Ninguna de las anteriores."
+    ],
+    ans: 2
+  },
+  {
+    q: "Indica cuál de las siguientes opciones de código se utiliza para asignar una dirección estática a un equipo en el archivo dhcpd.conf.",
+    opts: [
+      "ip 192.168.1.1;",
+      "fixed-address 192.168.1.1;",
+      "address 192.168.1.1;",
+      "default-ip 192.168.1.1;"
+    ],
+    ans: 1
+  },
+
+  // BLOQUE 3: SERVIDOR WEB APACHE Y SEGURIDAD
+  {
+    q: "De las siguientes afirmaciones, indica cuál está relacionada con la activación de un módulo de Apache 2.4.",
+    opts: [
+      "La inclusión de una directiva en el archivo /etc/apache2/apache2.conf.",
+      "La creación de archivos de carga y configuración del módulo en el directorio de activados.",
+      "La inclusión de una directiva en el archivo /etc/apache2/mods-available/000-default.conf.",
+      "La creación de un enlace de los archivos de módulos disponibles al directorio de activados."
+    ],
+    ans: 3
+  },
+  {
     q: "Indica cuál de las siguientes afirmaciones es falsa.",
     opts: [
-      "Autenticación mediante mod_auth.",
-      "Autorización controlada por sección Directory.",
-      "Básicamente tipos básica y digest.",
-      "Autenticación IP equivale a control de acceso."
+      "Los archivos .htaccess sobrescriben la configuración de Apache2 para un directorio.",
+      "DirectoryIndex establece la lista de nombres de archivos que se pueden utilizar si no se selecciona un nombre de archivo en una URL que referencia un directorio.",
+      "Alias permite mapear URL y paths del sistema de archivos local.",
+      "Por defecto, UserDir indica el nombre del subdirectorio, dentro del directorio /var/www/html donde pueden alojar los usuarios sus páginas web."
     ],
-    ans: 1
+    ans: 3
   },
   {
-    id: 72,
-    q: "La autenticación es un mecanismo de...",
-    opts: ["Verificar existencia usuario.", "Comprobación permisos.", "Comprobación credenciales.", "Sustituto certificados."],
-    ans: 2
-  },
-  {
-    id: 73,
-    q: "La utilización del control de acceso o autenticación por IP...",
+    q: "De las siguientes afirmaciones, indica cuál es correcta respecto del módulo mod_alias.",
     opts: [
-      "Requiere Order y Require.",
-      "Utiliza Satisfy para combinar con HTTP.",
-      "No permite autenticación desde dominios.",
-      "Devuelve error 403 y reintento."
+      "Engloba directivas que permiten la manipulación y control de peticiones de URL.",
+      "Utiliza siempre expresiones regulares para indicar a los navegadores que el documento buscado ha cambiado de localización.",
+      "Marca el directorio destino como contenedor solo de fuentes.",
+      "Marca el directorio destino como contenedor solo de ejecutables."
     ],
-    ans: 1
+    ans: 0
   },
   {
-    id: 74,
-    q: "Indica cuál de las siguientes afirmaciones es cierta.",
+    q: "Indica cuál de las siguientes afirmaciones es correcta respecto a la directiva SSLVerifyClient require.",
     opts: [
-      "Autenticación IP equivale a control de acceso.",
-      "Autenticación genérica mediante mod_auth.",
-      "Location no permite control de acceso.",
-      "Autorización mediante VirtualHost."
+      "Obliga al navegador a tener un certificado.",
+      "Indica que todos los usuarios locales pueden acceder sitio web seguro.",
+      "Obliga al navegador a tener soporte SSL.",
+      "Es de utilización opcional en la autenticación del cliente."
     ],
     ans: 0
   },
   {
-    id: 75,
-    q: "Archivos indicados en comando para certificado autofirmado en Ubuntu.",
-    opts: ["Certificado y petición firma.", "Clave y petición firma.", "Certificado y clave.", "Certificado, petición y clave."],
-    ans: 2
-  },
-  {
-    id: 76,
-    q: "En el certificado digital aparece la identidad de la CA.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 77,
-    q: "Verificar validez requiere comprobar firma de CA con clave pública de la CA.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 78,
-    q: "Objetivo de CA es acreditar correspondencia entre clave y propietario.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 79,
-    q: "Una autoridad certificadora puede tener certificado emitido por otra.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 80,
-    q: "La CA se encarga de firmar digitalmente...",
-    opts: ["Certificados de RA.", "Clave pública e identidad de usuarios.", "Claves privadas de usuarios.", "Claves simétricas."],
-    ans: 1
-  },
-  {
-    id: 81,
-    q: "Sobre la firma digital, indica la correcta.",
+    q: "Indica cuál de las siguientes afirmaciones es verdadera en relación con Apache2 en Windows.",
     opts: [
-      "Asegura confidencialidad del mensaje.",
-      "Receptor verifica con su clave pública.",
-      "Opciones a y b.",
-      "No requiere cifrar todo el mensaje con clave privada."
+      "LoadModule no siempre está ubicada en httpd.conf.",
+      "El módulo que permite el control de acceso no va incorporado en Apache2 por defecto.",
+      "Los archivos .htaccess permiten a los usuarios ejercer algún control sobre el comportamiento de su parte del servidor Apache2.",
+      "AllowOverride controla el comportamiento de las actualizaciones del servidor web."
     ],
-    ans: 3
+    ans: 2
   },
   {
-    id: 82,
-    q: "El módulo ssl requiere la desactivación del puerto 80.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 83,
-    q: "La directiva SSLEngine no requiere ningún parámetro.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 84,
-    q: "El módulo ssl requiere la utilización del archivo httpd-ssl.conf.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 85,
-    q: "La directiva SSLRequireSSL se debe poner a On para soporte SSL.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 86,
-    q: "Respecto a SHA-1, indica la correcta.",
+    q: "Indica cuál de las siguientes afirmaciones es verdadera respecto a hosts virtuales:",
     opts: [
-      "Algoritmo hash para trazabilidad evidencia.",
-      "Cifrar evidencia para trazabilidad.",
-      "Cifrar evidencia para integridad.",
-      "Algoritmo hash para integridad de evidencia."
+      "Todos los hosts virtuales tendrán, como máximo, un ServerAlias.",
+      "Todos los hosts virtuales tendrán, como máximo, una sección Directory.",
+      "Todos los hosts virtuales tendrán, como máximo, un DocumentRoot.",
+      "Todos los hosts virtuales tendrán, como máximo, un NameVirtualHost."
     ],
-    ans: 3
-  },
-  {
-    id: 87,
-    q: "Secuencia correcta de fases de análisis forense.",
-    opts: ["Evaluar, analizar, adquirir, informar.", "Informar, evaluar, adquirir, analizar.", "Evaluar, adquirir, analizar, informar.", "Adquirir, analizar, evaluar, informar."],
     ans: 2
   },
   {
-    id: 88,
-    q: "Normativa ISO/IEC 27042 se aplica a...",
-    opts: ["Analizar e interpretar evidencias.", "Evaluar, adquirir, analizar.", "Evaluar y adquirir.", "Evaluar, adquirir, informar."],
-    ans: 0
-  },
-  {
-    id: 89,
-    q: "Indica cuál no es una fase del análisis forense.",
-    opts: ["Identificación incidente.", "Análisis nube.", "Captura evidencias.", "Preservación evidencias."],
-    ans: 1
-  },
-  {
-    id: 90,
-    q: "Regla de oro del análisis forense.",
-    opts: ["Proteger metadatos.", "Proteger original evidencia.", "Proteger cookies.", "Proteger procesos ejecución."],
-    ans: 1
-  },
-  {
-    id: 91,
-    q: "FTP se creó después del servicio WWW.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 92,
-    q: "Objetivos FTP: útil, distribuido, multiplataforma y eficiente.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 93,
-    q: "NO es un tipo de usuario real de FTP.",
-    opts: ["Usuario local.", "Usuario anónimo.", "Usuario virtual.", "Usuario FTP con clave maestra."],
-    ans: 3
-  },
-  {
-    id: 94,
-    q: "Tanto modo activo como pasivo transmiten datos por puerto 20.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 95,
-    q: "En modo standalone, el servidor gestiona los puertos FTP.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 96,
-    q: "vsftpd crea el usuario FTP con home en /srv/ftp.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 97,
-    q: "FileZilla Server puede trabajar con FTP, FTPS o SFTP.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 98,
-    q: "Afirmación correcta sobre FTP, FTPS o SFTP.",
+    q: "Respecto a los hosts virtuales por IP, indica cuál es la opción falsa.",
     opts: [
-      "Canal seguro cifrado en los tres.",
-      "Solo FTP envía datos en texto claro.",
-      "SFTP encripta usando TLS/SSL.",
-      "FTPES no requiere certificado."
+      "Requieren la directiva ServerName.",
+      "Puede escuchar cada uno de ellos por varias interfaces de red.",
+      "Requieren disponer de varias direcciones IP.",
+      "No pueden combinarse con hosts virtuales por nombre."
     ],
-    ans: 1
-  },
-  {
-    id: 99,
-    q: "Al instalar open-sftp-server instalamos sshd.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 100,
-    q: "Para no activar un servicio al arrancar: $ systemctl enable <servicio>.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 101,
-    q: "Solo existe un modo para conectar a FTP: cliente GUI.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 102,
-    q: "Podemos conectar a servidor FTP desde gestor de archivos como unidad de red.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 103,
-    q: "Afirmación correcta sobre cliente FileZilla.",
-    opts: ["Diez zonas de trabajo.", "Ventana solo archivos.", "Familias FTP, SFTP y Nube.", "Transferir solo arrastrando."],
-    ans: 2
-  },
-  {
-    id: 104,
-    q: "FileZilla permite continuar descargas interrumpidas.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 105,
-    q: "Sin programa cliente FTP, podemos conectar desde terminal a cualquier servidor FTP y transferir.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 106,
-    q: "En configuración vsftpd solo comentarios o directivas.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 107,
-    q: "Grupos globales pueden contener usuarios locales y universales de otros dominios.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 108,
-    q: "Nombre login (pre-W2000) máximo 20 caracteres.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 109,
-    q: "Cambio de nombre equipo obligatorio para integrar en dominio.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 110,
-    q: "Usuario anónimo entra en /srv/ftp y es su raíz por jaula chroot.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 111,
-    q: "Opciones vsftpd para anónimos: mkdir, write, etc.",
-    opts: ["Carga desactivada por defecto.", "anon_other_write permite modificar.", "anon_mkdir permite crear carpetas.", "Todas correctas."],
     ans: 3
   },
   {
-    id: 112,
-    q: "Servidor FileZilla guarda configuración en XML.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 113,
-    q: "Servidor FileZilla permite nivel de registro en cinco niveles.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 114,
-    q: "Clientes de correo también denominados...",
-    opts: ["SMTP.", "MUA.", "MTA.", "MDA."],
-    ans: 1
-  },
-  {
-    id: 115,
-    q: "Protocolos para descargar correos desde MDA.",
-    opts: ["MTA y MDA.", "POP3 e IMAP4.", "POP3 y SMTP.", "IMAP4 y SMTP."],
-    ans: 1
-  },
-  {
-    id: 116,
-    q: "Correos electrónicos permiten enviar...",
-    opts: ["Solo texto.", "Solo multimedia.", "Texto y multimedia.", "Solo mensajes cortos."],
-    ans: 2
-  },
-  {
-    id: 117,
-    q: "MTA que delega en otro MTA el envío.",
-    opts: ["Smartphone.", "Middleware.", "Middle host.", "Relay host."],
-    ans: 3
-  },
-  {
-    id: 118,
-    q: "Comando para averiguar el MTA de un dominio.",
-    opts: ["dig A", "mta-find", "dig MX", "host"],
-    ans: 2
-  },
-  {
-    id: 119,
-    q: "Registro DNS que identifica al MTA.",
-    opts: ["A.", "MX.", "TX.", "PTR."],
-    ans: 1
-  },
-  {
-    id: 120,
-    q: "Comando SMTP para destinatario.",
-    opts: ["HELO.", "MAIL FROM.", "RCPT TO.", "DATA."],
-    ans: 2
-  },
-  {
-    id: 121,
-    q: "Recibir correos sin MX configurado (usa registro A).",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 122,
-    q: "Varios MX, ¿cuál se usa primero?",
-    opts: ["Primero en archivo.", "Menor prioridad (número bajo).", "Último en zona.", "Ilegal tener varios."],
-    ans: 1
-  },
-  {
-    id: 123,
-    q: "MUA para terminal de Linux.",
-    opts: ["Thunderbird.", "Gmail.", "Hotmail.", "Alpine."],
-    ans: 3
-  },
-  {
-    id: 124,
-    q: "Puertos POP3 texto plano y cifrado SSL.",
-    opts: ["110 y 995.", "252 y 8080.", "230 y 500.", "995 y 110."],
-    ans: 0
-  },
-  {
-    id: 125,
-    q: "Servidor encargado de entregar correo al MUA.",
-    opts: ["POP3.", "MTA.", "MDA.", "MUA."],
-    ans: 2
-  },
-  {
-    id: 126,
-    q: "MUA utiliza ___ o ___ para descargar desde MDA.",
-    opts: ["SMTP o IMAP4.", "POP3 o IMAP4.", "POP2 o FTP.", "IMAF o SSH."],
-    ans: 1
-  },
-  {
-    id: 127,
-    q: "Puertos IMAP4 plano y cifrado.",
-    opts: ["110 y 25.", "143 y 993.", "112 y 800.", "25 y 995."],
-    ans: 1
-  },
-  {
-    id: 128,
-    q: "Cifrado recomendado para POP3.",
-    opts: ["TLS 1.1.", "SSL 2.0.", "SSL 3.0.", "TLS 1.2 o superior."],
-    ans: 3
-  },
-  {
-    id: 129,
-    q: "Puerto submission (587) para MUA y puerto relay (25) para MTA.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 130,
-    q: "Tres técnicas autenticación contra spam.",
-    opts: ["SFP, DMIK, MARC.", "SPF, DKIM, DMARC.", "SSH, MARC, DCRAC.", "SPF, DKIM, MARC."],
-    ans: 1
-  },
-  {
-    id: 131,
-    q: "Cerrar puerto 25 para evitar ataques DoS permite recibir correos externos igual.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 132,
-    q: "Organización pequeña mejor correo en nube que propio.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 133,
-    q: "Garantía opcional en TLS.",
-    opts: ["Confidencialidad.", "Autenticación servidor.", "Integridad.", "Autenticación cliente."],
-    ans: 3
-  },
-  {
-    id: 134,
-    q: "Listas de correo únicamente privadas.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 135,
-    q: "Suscripción lista pública pulsando enlace.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 136,
-    q: "Mensajería instantánea en red local sin servidor.",
-    opts: ["IP Messenger.", "Slack.", "Discord.", "MS Teams."],
-    ans: 0
-  },
-  {
-    id: 137,
-    q: "Mensajes de listas se almacenan para consulta web.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 138,
-    q: "Para evitar spam, listas públicas deben...",
-    opts: ["Confirmar suscripción y enlace baja.", "Direcciones sin confirmar.", "Solo confirmar.", "Solo indicaciones baja."],
-    ans: 0
-  },
-  {
-    id: 139,
-    q: "Mayor amplitud señal sonido = mayor volumen.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 140,
-    q: "Mide separación horizontal entre picos de señal en Hz.",
-    opts: ["Latencia.", "Sonoridad.", "Amplitud.", "Frecuencia."],
-    ans: 3
-  },
-  {
-    id: 141,
-    q: "Frecuencias bajas = tonos agudos y picos juntos.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 142,
-    q: "Analógico a digital = pérdida información.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 143,
-    q: "Ajustar ganancia evita clipping.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 144,
-    q: "Formatos compresión siempre con pérdidas.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 145,
-    q: "Guardar Opus o PCM en contenedor M4A.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 146,
-    q: "Extensión archivo indica códec utilizado.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 147,
-    q: "Códecs reproducen bloque antes de recibirlo entero.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 148,
-    q: "Mecanismo de almacenar bloques antes de reproducir.",
-    opts: ["Aprovisionamiento.", "Buffering.", "Descarga.", "Acumulación."],
-    ans: 1
-  },
-  {
-    id: 149,
-    q: "Número columnas y filas de imagen.",
-    opts: ["Píxeles.", "Relación aspecto.", "Resolución.", "ADC."],
-    ans: 2
-  },
-  {
-    id: 150,
-    q: "Existen resoluciones estandarizadas con nombres comerciales.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 151,
-    q: "Sistema entrelazado envía fotograma entero.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 152,
-    q: "Montar vídeo: misma cantidad de fps en fuentes.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 153,
-    q: "Reproductor más utilizado actualmente.",
-    opts: ["Winamp.", "VLC Media Player.", "SM Player.", "Media Monkey."],
-    ans: 1
-  },
-  {
-    id: 154,
-    q: "Compresión imágenes aprovecha redundancias.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 155,
-    q: "Todos los formatos compresión permiten o no pérdidas.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 156,
-    q: "Artefacto característico de compresión JPEG.",
-    opts: ["Efecto peine.", "Aparición de bloques.", "Color nítido."],
-    ans: 1
-  },
-  {
-    id: 157,
-    q: "Fotograma codificado por cambios respecto al anterior.",
-    opts: ["Fotograma P.", "Fotograma I.", "Fotograma B."],
-    ans: 0
-  },
-  {
-    id: 158,
-    q: "GUI sencillo multiplataforma para convertir archivos.",
-    opts: ["FFmpeg.", "YouTube.", "Handbrake.", "CRF."],
-    ans: 2
-  },
-  {
-    id: 159,
-    q: "Streaming requiere ancho banda proporcional a espectadores.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 160,
-    q: "¿Cuál es un protocolo de streaming?",
-    opts: ["SMTP.", "HTTP.", "RTSP.", "ASP."],
-    ans: 2
-  },
-  {
-    id: 161,
-    q: "Plataforma para hospedar pódcast.",
-    opts: ["Anchor.fm.", "Twitch.", "Google Play Music."],
-    ans: 0
-  },
-  {
-    id: 162,
-    q: "Aplicación para generar contenido múltiples fuentes (stream/local).",
-    opts: ["OBK.", "OBS.", "HLS.", "Content Generator."],
-    ans: 1
-  },
-  {
-    id: 163,
-    q: "Formato streaming incompatible con navegadores Apple.",
-    opts: ["RTSP.", "RTMP.", "HLS.", "DASH."],
-    ans: 3
-  },
-  {
-    id: 164,
-    q: "Desventaja paneles administración.",
-    opts: ["Migración difícil.", "No recomendado reventa.", "Dificulta actualización.", "Dependencia entorno (lock-in)."],
-    ans: 3
-  },
-  {
-    id: 165,
-    q: "Sobre elegir panel administración.",
-    opts: ["Webmin comercial robusto.", "Plesk solo frontend.", "Aislamiento no crítico.", "Plesk comercial robusto."],
-    ans: 3
-  },
-  {
-    id: 166,
-    q: "HestiaCP libre y seguro, limitado a Debian/Ubuntu.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 167,
-    q: "HestiaCP estructura no estándar, no extrapolable.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 168,
-    q: "HestiaCP: Apache escucha directamente en 80 y 443.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 169,
-    q: "HestiaCP implementa DKIM y SSL Let's Encrypt.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 170,
-    q: "Cambiar opciones web manualmente en ficheros HestiaCP.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 171,
-    q: "HestiaCP incorpora ASP, PHP y JSP.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 172,
-    q: "Opción FALSA sobre HestiaCP.",
-    opts: ["Ofrece chroot jail.", "Soporte multiplataforma Windows/Linux.", "Certificados Let's Encrypt.", "Arquitectura reverse proxy."],
-    ans: 1
-  },
-  {
-    id: 173,
-    q: "Servicios que ofrece HestiaCP.",
-    opts: ["Reverse proxy Apache/Nginx.", "Email (Exim/Dovecot).", "DNS Bind.", "Todas correctas."],
-    ans: 3
-  },
-  {
-    id: 174,
-    q: "Servicios DNS en la nube.",
+    q: "De las siguientes afirmaciones, indica cuál es la correcta.",
     opts: [
-      "No se usan tradicionales.",
-      "Sustituidos por balanceadores.",
-      "Monitorización sustituyó resolución.",
-      "Funcionalidades extendidas para escala global."
+      "La protección de un directorio solo se puede hacer a través de una sección Directory.",
+      "Si un usuario puede acceder a un recurso que requiere autenticación, debe pertenecer a un grupo determinado.",
+      "La directiva Satisfy requiere el módulo mod_access_compat.",
+      "La directiva AuthName indica el nombre de la autenticación."
     ],
     ans: 3
   },
   {
-    id: 175,
-    q: "Enrutamiento peticiones DNS Cloud según...",
+    q: "Cuál de las siguientes afirmaciones es correcta respecto a la directiva AuthConfig.",
     opts: [
-      "Latencia, ubicación, ponderación, temperatura.",
-      "Latencia, ubicación, ponderación, fallo.",
-      "Fallo, latencia, carga cada nodo.",
-      "Latencia, ubicación, fallo, VPC."
+      "Tipo de autenticación con su archivo de configuración correspondiente.",
+      "Impide la utilización de archivos .htaccess con autenticación.",
+      "Permite la utilización de archivos .htaccess con autenticación.",
+      "Indica la ruta hacia el archivo de autenticación."
     ],
-    ans: 1
-  },
-  {
-    id: 176,
-    q: "Normalmente no posible lanzar propio DHCP en nube pública.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 177,
-    q: "Opción correcta red Cloud.",
-    opts: [
-      "Azure automático = Traffic Manager.",
-      "Sustituido por IaC.",
-      "NetBIOS incluido en DHCP AWS.",
-      "Azure: especificar DNS de cada VNet."
-    ],
-    ans: 3
-  },
-  {
-    id: 178,
-    q: "Sobre Infraestructura como Código (IaC).",
-    opts: ["Mantenimiento mediante scripting.", "Terraform lenguaje unificado.", "Todas correctas.", "Editor gráfico en AWS."],
     ans: 2
   },
   {
-    id: 179,
-    q: "AWS S3 sirve contenido estático sin servidores.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 180,
-    q: "Contenido estático mejor en Apache + PHP que en S3.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 181,
-    q: "S3/Blob puede procesar PHP, ASP o JSP.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 182,
-    q: "S3/Blob solo multimedia, no HTML/JS.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 183,
-    q: "CDN sirve copias caché desde ubicaciones cercanas al visitante.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 184,
-    q: "CDN ofrece protección contra phishing.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 185,
-    q: "Opción INCORRECTA esquema aplicación moderna.",
+    q: "La autoridad certificadora (CA) se encarga de firmar digitalmente...",
     opts: [
-      "Peticiones dinámicas servidores clónicos.",
-      "Servidores con código fuente propio cada uno.",
-      "Multimedia servida por almacenamiento masivo.",
-      "Base de datos escalable clúster."
+      "Las claves privadas de los usuarios de dicha CA.",
+      "Los certificados de las autoridades de registro.",
+      "Las claves simétricas de los usuarios.",
+      "La clave pública de los usuarios junto con otra información de la identidad."
     ],
-    ans: 1
-  },
-  {
-    id: 186,
-    q: "Opción INCORRECTA sobre SPA.",
-    opts: ["Ejemplo Gmail.", "Usa formularios clásicos recargando todo.", "Peticiones asíncronas.", "Carga inicial estática."],
-    ans: 1
-  },
-  {
-    id: 187,
-    q: "Esquema aplicación moderna en AWS.",
-    opts: ["Route 53 y CloudFront dividen estático/dinámico.", "Base datos RDS.", "Estáticas S3, dinámicas balanceador.", "Todas correctas."],
     ans: 3
   },
+
+  // BLOQUE 4: FTP
   {
-    id: 188,
-    q: "Opción INCORRECTA servicios AWS.",
-    opts: ["Autoescalado servidores dinámicos.", "CloudFlare es la CDN de AWS.", "Código compartido en EFS.", "Route 53 interviene."],
-    ans: 1
-  },
-  {
-    id: 189,
-    q: "Sobre red telefónica conmutada (RTC).",
-    opts: ["Conmutación paquetes.", "Capacidad ilimitada.", "Establecía un circuito entre emisor/receptor.", "Conmutación circuitos s.XX."],
+    q: "Respecto a los protocolos de transferencia de archivos, ¿cuál de estas afirmaciones es cierta?",
+    opts: [
+      "FTP es un protocolo derivado de SFTP, pero no de SSH.",
+      "SFTP no es un protocolo derivado de FTP ni de SSH.",
+      "SFTP es una expansión de SSH.",
+      "SFTP se basa en FTP, pero no en SSH."
+    ],
     ans: 2
   },
   {
-    id: 190,
-    q: "Opción INCORRECTA transición telefonía IP.",
-    opts: ["Teléfonos convencionales por IP.", "Sustituir por softphones conectando troncales.", "PBX IP sustituyen PBX.", "Troncales SIP."],
-    ans: 1
-  },
-  {
-    id: 191,
-    q: "Telefonía IP encapsula voz como paquetes IP.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 192,
-    q: "Imposible encontrar gateways VoIP para teléfonos convencionales hoy.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 193,
-    q: "PBX IP reemplazo de PBX convencionales.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 194,
-    q: "PBX IP conocidas como troncales SIP.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 1
-  },
-  {
-    id: 195,
-    q: "DID e IVR características deseables en PBX IP.",
-    opts: ["Verdadero.", "Falso."],
-    ans: 0
-  },
-  {
-    id: 196,
-    q: "Sobre transición telefonía IP.",
+    q: "¿Cuál es el RFC que define del protocolo FTP?",
     opts: [
-      "WebRTC tecnología unificadora.",
-      "WebRTC intento RTC en navegadores.",
-      "Desventaja plugins.",
-      "WebRTC no coordinada con W3C."
+      "RFC 4918.",
+      "RFC 1350.",
+      "RFC 959.",
+      "Ninguno: aún se encuentra en fase de borrador."
+    ],
+    ans: 2
+  },
+  {
+    q: "Un servidor FTP usa el puerto 21 para enviar...",
+    opts: [
+      "Las respuestas al cliente.",
+      "Los archivos solicitados.",
+      "Las peticiones del cliente.",
+      "Las respuestas al cliente y los archivos solicitados."
     ],
     ans: 0
   },
   {
-    id: 197,
-    q: "Sobre protocolos telefonía IP.",
-    opts: ["SIP usa SDP y STUN/TURN.", "WebRTC usa SDP y STUN/TURN.", "WebRTC usa SRTP y DTLS.", "Todas ciertas."],
+    q: "Cuando un servidor FTP está en modo activo...",
+    opts: [
+      "El servidor establece tanto la conexión de datos como la de control.",
+      "El servidor establece la conexión de datos, y el cliente, la de control.",
+      "El cliente establece la conexión de datos, y el servidor, la de control.",
+      "El cliente establece tanto la conexión de datos como la de control."
+    ],
+    ans: 2
+  },
+  {
+    q: "¿Cuántos canales utiliza SFTP?",
+    opts: ["1.", "2.", "3.", "4."],
+    ans: 0
+  },
+  {
+    q: "¿En qué protocolo envía sus credenciales SSL/TLS el servidor al cliente?",
+    opts: ["FTPSE.", "FTP.", "SFTP.", "FTPS."],
     ans: 3
+  },
+  {
+    q: "El protocolo SFTP...",
+    opts: [
+      "Se encarga de la transmisión y del cifrado de la información.",
+      "Se encarga de la transmisión y de la autenticación.",
+      "Se encarga únicamente de la transmisión.",
+      "Se encarga de la transmisión, de la autenticación y del cifrado de la información."
+    ],
+    ans: 3
+  },
+  {
+    q: "¿A qué carpeta puede acceder el usuario ftp del servidor vsftpd?",
+    opts: ["/home/ftp.", "/ftp.", "/var/ftp.", "/srv/ftp."],
+    ans: 3
+  },
+  {
+    q: "¿Qué directiva del fichero de configuración /etc/vsftpd.conf permite enjaular al usuario local en su home?",
+    opts: [
+      "chroot_user_local.",
+      "chroot_local_user.",
+      "chroot_list_enable.",
+      "chroot_list_file."
+    ],
+    ans: 1
+  },
+  {
+    q: "¿Qué hace la directiva local_umask?",
+    opts: [
+      "Establecer los permisos del propietario del archivo subido al servidor.",
+      "Establecer los permisos con los que quedará el archivo subido al cliente.",
+      "Establecer los permisos con los que quedará el archivo subido al servidor.",
+      "Establecer los permisos del propietario del archivo subido al cliente."
+    ],
+    ans: 2
+  },
+
+  // BLOQUE 5: CORREO ELECTRÓNICO Y MENSAJERÍA
+  {
+    q: "En un correo de Alice a Bob con copia a Carlos y copia oculta a David, ¿quién sabe que el mensaje se ha enviado a David?",
+    opts: ["Alice.", "Bob.", "Carlos.", "David."],
+    ans: 0
+  },
+  {
+    q: "¿Qué puerto está designado para que los MUA envíen correos a los MTA?",
+    opts: ["587.", "465.", "25.", "110."],
+    ans: 0
+  },
+  {
+    q: "Cuando un MTA recibe un correo electrónico y los dominios de origen y destino no coinciden, la entrega se hará en el propio servidor.",
+    opts: ["Verdadero.", "Falso."],
+    ans: 1
+  },
+  {
+    q: "¿Cuál de los siguientes campos de la cabecera es obligatorio?",
+    opts: ["Subject.", "To.", "Date.", "From."],
+    ans: 3
+  },
+  {
+    q: "¿Cuál es uno de los fines del puerto submission?",
+    opts: [
+      "Envío de correo a los MUA.",
+      "Poder establecer políticas de seguridad distintas de las del puerto relay.",
+      "Reenvío de correos entre MTA.",
+      "Recepción de correo desde los MUA."
+    ],
+    ans: 3
+  },
+  {
+    q: "El cifrado TLS está basado en criptografía de clave pública/privada, pero no necesita de un certificado emitido por una autoridad certificadora (CA) para que cualquier persona confíe en él.",
+    opts: ["Falso.", "Verdadero."],
+    ans: 0
+  },
+  {
+    q: "Si estamos instalando un MDA nuevo de cero, lo recomendable sería usar solo el puerto 587 si tenemos un sistema heredado, y con clientes ya configurados, adicionalmente, deberíamos soportar el 465.",
+    opts: ["Verdadero.", "Falso."],
+    ans: 0
+  },
+  {
+    q: "Sender policy framework es una técnica de autenticación basada en la comprobación de la IP del cliente.",
+    opts: ["Falso.", "Verdadero."],
+    ans: 1
+  },
+  {
+    q: "En las listas con mucha actividad, los usuarios pueden elegir, normalmente, la frecuencia con la que reciben la información, o silenciar los mensajes.",
+    opts: ["Falso.", "Verdadero."],
+    ans: 1
+  },
+  {
+    q: "Si el criterio más importante es que los datos no estén en servidores de terceros, ¿qué herramienta de mensajería instantánea podríamos usar?",
+    opts: ["MatterMost.", "Slack.", "Whatsapp.", "Discord."],
+    ans: 0
+  },
+
+  // BLOQUE 6: MULTIMEDIA Y STREAMING
+  {
+    q: "La frecuencia de las señales acústicas se mide en...",
+    opts: ["Voltios.", "Hercios.", "Pascales.", "Decibelios."],
+    ans: 1
+  },
+  {
+    q: "Cuanto mayor sea el número de bits de resolución, mejores aproximaciones y mayor calidad tendrá el sonido muestreado.",
+    opts: ["Verdadero.", "Falso."],
+    ans: 0
+  },
+  {
+    q: "¿Cuál de los siguientes códecs tiene compresión y no tiene pérdidas de calidad?",
+    opts: ["Flac.", "PCM.", "Vorbis.", "MP3."],
+    ans: 0
+  },
+  {
+    q: "La suma de retardos que se produce durante las transmisiones a través de una red se llama...",
+    opts: ["Retraso.", "Velocidad.", "Buffering.", "Latencia."],
+    ans: 3
+  },
+  {
+    q: "El estándar WQHD tiene una resolución...",
+    opts: ["640 × 480.", "3840 × 2160.", "2560 × 1440.", "1920 × 1080."],
+    ans: 2
+  },
+  {
+    q: "¿Con qué técnica para capturar imágenes puede ocurrir el efecto peine?",
+    opts: ["Captura progresiva.", "Captura entrelazada.", "Captura digital.", "Captura analógica."],
+    ans: 1
+  },
+  {
+    q: "¿Qué formato tiene compresión y nunca tiene pérdidas?",
+    opts: ["HEIF.", "GIF.", "PNG.", "JPG."],
+    ans: 2
+  },
+  {
+    q: "¿Cuál es el códec más utilizado, de uso libre para usuarios finales, y con mayor calidad y tasa de compresión?",
+    opts: ["AV1.", "H.264.", "H.265.", "MPEG."],
+    ans: 0
+  },
+  {
+    q: "¿Qué protocolo es utilizado por el emisor para enviar el stream al servidor?",
+    opts: ["DASH.", "RTSP.", "RTMP.", "HLS."],
+    ans: 2
+  },
+  {
+    q: "Si nuestro cortafuegos está configurado para permitir únicamente conexiones al puerto 80, será necesario abrir nuevos puertos para hacer streaming RTMP.",
+    opts: ["Falso.", "Verdadero."],
+    ans: 1
+  },
+
+  // BLOQUE 7: ADMINISTRACIÓN Y NUBE
+  {
+    q: "Señala la opción correcta respecto al uso de paneles de administración.",
+    opts: [
+      "Sirven para instalar, actualizar y explotar distintos servicios de red de manera acompasada.",
+      "Tienen la ventaja de poder realizar cambios de configuración a posteriori fuera de la estructura del panel, sin corromper su funcionamiento.",
+      "Solamente se pueden encontrar dentro de proveedores de hosting, como parte de su estructura interna.",
+      "Tienen la desventaja de manejar un gran número de versiones, extensiones y configuraciones virtuales."
+    ],
+    ans: 0
+  },
+  {
+    q: "Indica la opción correcta respecto al panel de administración HestiaCP.",
+    opts: [
+      "Es un panel de pago y gran difusión, pero su precio es muy asequible.",
+      "Implementa una arquitectura de reverse proxy para el servidor web, con soporte de certificados Let's Encrypt.",
+      "Permite elegir entre diferentes tecnologías de scripting de servidor, tales como PHP, ASP o JSP en el momento de instalar.",
+      "Tiene muchas funciones, pero no da soporte para multi-PHP o certificados SSL."
+    ],
+    ans: 1
+  },
+  {
+    q: "Elige la opción correcta en lo relativo al panel de administración HestiaCP.",
+    opts: [
+      "Todas son correctas.",
+      "Los usuarios de acceso son estándar del sistema operativo, y pueden acceder al panel mediante consola o bien con una pareja de claves, como en Putty.",
+      "Gestiona límites de cuota de almacenamiento y ancho de banda para los sitios alojados de los diferentes usuarios.",
+      "Por seguridad y para facilitar copias de seguridad y migraciones, compartimenta la infraestructura de cada usuario en su home."
+    ],
+    ans: 0
+  },
+  {
+    q: "Señala la opción correcta respecto al DNS en la nube.",
+    opts: [
+      "En la nube se integra en el protocolo universal Terraform, que luego se puede traducir a cualquier proveedor específico.",
+      "El protocolo DNS en la nube se sustituye por el más avanzado Traffic Flow.",
+      "Tiene pleno soporte en la nube y se amplía con servicios como Route 53, que ofrecen características más avanzadas y específicas.",
+      "El protocolo DNS en la nube se sustituye por servicios como Route 53 en AWS."
+    ],
+    ans: 2
+  },
+  {
+    q: "Indica la opción verdadera para los servicios de configuración automática.",
+    opts: [
+      "Los conjuntos de opciones de DHCP en AWS implementan infraestructuras cloud, en lo que se denomina IaC o «infraestructura como código».",
+      "Es habitual el lanzamiento de instancias DHCP propias para la configuración automática de los VPC/VNet.",
+      "Existe la opción de crear y configurar automáticamente infraestructura mediante scripting con Terraform, lenguaje universal de IaC.",
+      "En Azure existe un DHCP propio en la IP fija 168.63.129.16, que proporciona la configuración de red, DNS, NTP y NetBIOS."
+    ],
+    ans: 3
+  },
+  {
+    q: "Indica la opción incorrecta para los servicios de correo en la nube.",
+    opts: [
+      "Si no has solicitado confirmación a los receptores de campañas o utilizas malas prácticas de seguridad en el servidor o mandas contenido peligroso, puedes acabar en una lista negra.",
+      "Si buena parte de los emails vuelven retornados o no son recibidos, es muy probable que tu dominio o IP esté incluido en una lista negra.",
+      "Los servicios externos de gestión de correo como Mailchimp se suelen usar tanto para campañas masivas como para el día a día con clientes y proveedores.",
+      "En las pymes es habitual usar, para los correos del día a día con clientes y proveedores, un servidor de correo propio o contratado a una empresa externa."
+    ],
+    ans: 2
+  },
+  {
+    q: "La diferencia principal entre una estructura de servidor monolítico y una estructura moderna en la nube es...",
+    opts: [
+      "El uso de tecnologías de alta disponibilidad como RAID o bases de datos en memoria.",
+      "El contenido estático, como HTML, JavaScript, imágenes o vídeos, está en un único repositorio centralizado que se comparte por NFS a varias máquinas.",
+      "Todas son falsas.",
+      "Que disocia el tratamiento de las peticiones que entran, según sean estáticas o dinámicas."
+    ],
+    ans: 3
+  },
+  {
+    q: "Los content delivery network o CDN...",
+    opts: [
+      "Sirven para evitar exposición a ataques de denegación de servicio distribuida o DDoS.",
+      "Están implementados sobre una red de proxies inversos, denominados puntos de presencia o PoP.",
+      "Sirven para reducir la latencia en el acceso a los contenidos web desde cualquier ubicación.",
+      "Todas son correctas."
+    ],
+    ans: 3
+  },
+  {
+    q: "Indica la opción incorrecta respecto de la telefonía IP.",
+    opts: [
+      "La telefonía IP supone la evolución desde la conmutación de circuitos físicos en favor de la conmutación de paquetes digitalizados.",
+      "La telefonía IP supone la sustitución de todas las centralitas, troncales y teléfonos por dispositivos específicos o aplicaciones software.",
+      "La telefonía IP es una digitalización y encapsulamiento de voz como datos para transmitir por Internet.",
+      "Un gateway VoIP es el reemplazo de las antiguas centralitas PBX para ubicaciones privadas con la transición a telefonía IP."
+    ],
+    ans: 1
+  },
+  {
+    q: "Indica la opción correcta en relación con los protocolos de la telefonía IP.",
+    opts: [
+      "El protocolo SIP y sus evoluciones RTP y SRTP no transmiten la multimedia en sí.",
+      "El framework ICE y los protocolos STUN/TURN sirven para el establecimiento de conexiones atravesando NAT.",
+      "En WebRTC los protocolos RTCP, VP8 y VP9 transmiten la multimedia con grandes ventajas de ancho de banda y compresión sobre los anteriores.",
+      "Los protocolos SDP y su versión más moderna WebRTC sirven para negociar las condiciones de la sesión entre emisor y receptor."
+    ],
+    ans: 1
   }
 ];
