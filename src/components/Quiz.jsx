@@ -2,14 +2,44 @@ import { useState } from 'react'
 import './Quiz.css'
 
 export default function Quiz({ test, onFinish, onBack }) {
+  // Mezcla aleatoria de un array
+  const shuffleArray = (array) => {
+    const shuffled = [...array]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+    }
+    return shuffled
+  }
+
+  // Mezclar las preguntas Y mezclar las opciones dentro de cada pregunta
+  const prepareShuffledQuestions = (questions) => {
+    const shuffledQs = shuffleArray(questions)
+    return shuffledQs.map(question => {
+      // Guardamos la opción correcta original
+      const correctOption = question.opts[question.ans]
+      // Mezclamos las opciones
+      const shuffledOpts = shuffleArray(question.opts)
+      // Buscamos el nuevo índice de la opción correcta
+      const newAns = shuffledOpts.indexOf(correctOption)
+      return {
+        q: question.q,
+        opts: shuffledOpts,
+        ans: newAns
+      }
+    })
+  }
+
+  // useState con función para que solo se mezcle una vez al inicio
+  const [shuffledQuestions] = useState(() => prepareShuffledQuestions(test.questions))
   const [curQ, setCurQ] = useState(0)
   const [answered, setAnswered] = useState(false)
   const [score, setScore] = useState(0)
   const [userAnswers, setUserAnswers] = useState([])
   const [selectedAnswer, setSelectedAnswer] = useState(null)
 
-  const q = test.questions[curQ]
-  const total = test.questions.length
+  const q = shuffledQuestions[curQ]
+  const total = shuffledQuestions.length
   const progress = ((curQ + 1) / total) * 100
 
   const checkAnswer = (i) => {
